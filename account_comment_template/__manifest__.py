@@ -7,7 +7,7 @@
 {
     "name": "Account Comments",
     "summary": "Comments templates on invoice documents",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "category": "Accounting",
     "author": "Camptocamp, Tecnativa, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-invoice-reporting",
@@ -20,7 +20,7 @@
     "data": [
         "views/account_move_view.xml",
         "views/base_comment_template_view.xml",
-        "security/ir.model.access.csv",
         "views/report_invoice.xml",
+        "security/ir.access.csv",
     ],
 }

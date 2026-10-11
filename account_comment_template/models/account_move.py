@@ -5,9 +5,11 @@
 # Copyright 2021 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+import typing
+
 from odoo import models
 
 
 class AccountMove(models.Model):
     _name = "account.move"
-    _inherit = ["account.move", "comment.template"]
+    _inherit: typing.ClassVar[list[str]] = ["account.move", "comment.template"]
