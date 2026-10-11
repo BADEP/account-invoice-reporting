@@ -12,14 +12,17 @@ class AccountMove(models.Model):
         info_pattern = (
             self.env["ir.config_parameter"]
             .sudo()
-            .get_param("account_invoice_report_payment_info.info_pattern", default="")
+            .get_str("account_invoice_report_payment_info.info_pattern", default="")
         )
         Move = self.env["account.move"]
         for one in self:
             if not res and not one.invoice_payments_widget:
                 continue
-            for payment_dict in one.invoice_payments_widget["content"]:
+            # Json field: reading returns a copy, so update it and reassign
+            widget = one.invoice_payments_widget
+            for payment_dict in widget["content"]:
                 move = Move.browse(payment_dict["move_id"])
                 payment_dict["move_ref"] = move.ref
                 payment_dict["extra_info"] = info_pattern.format(**payment_dict)
+            one.invoice_payments_widget = widget
         return res
