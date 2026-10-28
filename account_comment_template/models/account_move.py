@@ -10,4 +10,4 @@ from odoo import models
 
 class AccountMove(models.Model):
     _name = "account.move"
-    _inherit = ["account.move", "comment.template"]
+    _inherit = ["account.move", "comment.template"]  # noqa: RUF012
